@@ -19,7 +19,23 @@ RUN apt-get update && apt install -y --no-install-recommends \
     libxext6 \
     libx11-6 \
     libgl1-mesa-dev \
-    libglew-dev 
+    libglew-dev \
+    libx11-xcb1 \
+    libxcb1 \
+    libxcb-util1 \
+    libxcb-keysyms1 \
+    libxcb-image0 \
+    libxcb-shm0 \
+    libxcb-icccm4 \
+    libxcb-render-util0 \
+    libxcb-xinerama0 \
+    libxcb-randr0 \
+    libxcb-xfixes0 \
+    libxcb-shape0 \
+    libxcb-sync1 \
+    libxcb-xkb1 \
+    libxkbcommon0 \
+    libxkbcommon-x11-0
 
 RUN apt-get update && apt install -y --no-install-recommends \
     build-essential \
