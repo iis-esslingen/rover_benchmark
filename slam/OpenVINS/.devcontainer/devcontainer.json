@@ -1,0 +1,23 @@
+{
+  "name": "ROS Noetic Workspace",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "container",
+  "overrideCommand": true,
+  "initializeCommand": "/bin/bash .devcontainer/initialize_command.sh",
+  "postCreateCommand": "/bin/bash /workspace/.devcontainer/post_exec.sh",
+  "workspaceFolder": "/workspace/",
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "extensions": [
+    "ms-iot.vscode-ros",
+    "ms-python.python",
+    "ms-vscode.cmake-tools"
+  ],
+  "containerEnv": {
+        "DISPLAY": "${localEnv:DISPLAY::0}",
+        "ROS_AUTOMATIC_DISCORVERY_RANGE": "LOCALHOST",
+        "ROS_DOMAIN_ID": "42"
+  },
+  "remoteUser": "root"
+}

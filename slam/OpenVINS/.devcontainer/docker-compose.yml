@@ -1,0 +1,15 @@
+services:
+  container:
+    build:
+      context: ..
+      dockerfile: .devcontainer/dockerfile
+    volumes:
+      - type: bind
+        source: ..
+        target: /workspace
+      - type: bind
+        source: ${SELECTED_DIRECTORY}
+        target: /workspace/mounted_directory
+    network_mode: "host"
+    privileged: true
+

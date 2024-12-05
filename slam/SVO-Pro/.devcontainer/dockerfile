@@ -1,0 +1,32 @@
+FROM osrf/ros:noetic-desktop-full
+
+SHELL ["/bin/bash", "-c"]
+
+WORKDIR /workspace/catkin_ws
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libglew-dev \
+    libopencv-dev \
+    libyaml-cpp-dev \
+    libblas-dev \
+    liblapack-dev \
+    libsuitesparse-dev \
+    cmake \
+    libtool \
+    wget \
+    python3-catkin-tools \
+    python3-vcstool \
+    python3-osrf-pycommon \
+    ros-noetic-hector-trajectory-server \
+    libopencv-dev \
+    git \
+    ccache \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p /workspace/catkin_ws/src
+
+RUN echo "source /opt/ros/noetic/setup.bash" >> "/root/.bashrc" && \
+    echo "[ -f /workspace/catkin_ws/devel/setup.bash ] && source /workspace/catkin_ws/devel/setup.bash" >> "/root/.bashrc"
+
+WORKDIR /workspace/catkin_ws

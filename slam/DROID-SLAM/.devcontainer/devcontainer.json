@@ -1,0 +1,14 @@
+{
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "container",
+    "overrideCommand": true,
+    "initializeCommand": [
+        "/bin/bash", "-c", ".devcontainer/initialize_command"
+    ],
+    "postCreateCommand": "bash -i .devcontainer/post_exec.sh",
+    "workspaceFolder": "/workspace",
+    "runArgs": [
+        "--gpus=all"
+    ]
+  }
+  

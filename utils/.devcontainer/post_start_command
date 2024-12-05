@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+echo Silencing all dubious ownership errors. See https://stackoverflow.com/a/71904131 for potential risks.
+git config --global --add safe.directory "*"
+
+DISPLAY_EXPORT="export DISPLAY=:0"
+ROS_HOSTNAME_EXPORT="export ROS_HOSTNAME=localhost"
+
+if [[ $DISPLAY = "1" ]]; then
+    echo DISPLAY environment variable is \'1\'. Assuming its \'1\' because of https://github.com/microsoft/vscode-remote-release/issues/7565 on Windows host.
+    echo Setting DISPLAY environment variable to \':0\' instead.
+    if ! grep -q "${DISPLAY_EXPORT}" ~/.bashrc; then
+        echo "${DISPLAY_EXPORT}" >> ~/.bashrc
+    fi
+fi
+
+echo Setting ROS_HOSTNAME environment variable to \'localhost\'.
+if ! grep -q "${ROS_HOSTNAME_EXPORT}" ~/.bashrc; then
+    echo "${ROS_HOSTNAME_EXPORT}" >> ~/.bashrc
+fi

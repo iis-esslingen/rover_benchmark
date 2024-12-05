@@ -1,0 +1,38 @@
+FROM osrf/ros:noetic-desktop-full
+
+SHELL ["/bin/bash", "-c"]
+
+WORKDIR /workspace/catkin_ws
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    python3-catkin-tools \
+    ros-noetic-hector-trajectory-server \
+    libopencv-dev \
+    ccache \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN git clone --branch v0.9.0 --depth 1 "https://github.com/stevenlovegrove/Pangolin.git" "temp" && \
+    cd "temp" && \
+    mkdir "build" && \
+    cd "build" && \
+    cmake ".." && \
+    make && \
+    sudo make install && \
+    sudo ldconfig && \
+    cd "../.." && \
+    rm -rf "temp";
+
+RUN sudo apt install -y ccache && \
+    echo 'export PATH="/usr/lib/ccache:$PATH"' | tee -a ~/.bashrc && \
+    source ~/.bashrc && echo $PATH && \
+    ccache --max-size=10G
+
+RUN mkdir -p /workspace/catkin_ws/src
+
+RUN echo "source /opt/ros/noetic/setup.bash" >> "/root/.bashrc" && \
+    echo "[ -f /workspace/catkin_ws/devel/setup.bash ] && source /workspace/catkin_ws/devel/setup.bash" >> "/root/.bashrc"
+
+WORKDIR /workspace/catkin_ws

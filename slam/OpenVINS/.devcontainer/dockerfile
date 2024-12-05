@@ -1,0 +1,42 @@
+FROM osrf/ros:noetic-desktop-full
+
+SHELL ["/bin/bash", "-c"]
+
+WORKDIR /workspace/catkin_ws
+
+RUN sudo apt-get update && sudo apt-get upgrade -y && \
+    sudo apt-get install -y --no-install-recommends \
+        nano \
+        git \
+        python3-dev \
+        python3-matplotlib \
+        python3-numpy \
+        python3-psutil \
+        python3-tk \
+        python3-catkin-tools \
+        python3-osrf-pycommon \
+        cmake \
+        libgoogle-glog-dev \
+        libgflags-dev \
+        libatlas-base-dev \
+        libeigen3-dev \
+        libsuitesparse-dev \
+        libceres-dev && \
+    # Perform cleanup.
+    rm -rf "/var/lib/apt/lists/*" && \
+    sudo apt-get clean
+
+
+RUN sudo apt install -y ccache && \
+    echo 'export PATH="/usr/lib/ccache:$PATH"' | tee -a ~/.bashrc && \
+    source ~/.bashrc && echo $PATH && \
+    ccache --max-size=10G
+
+RUN mkdir -p /workspace/catkin_ws/src
+
+RUN echo "source /opt/ros/noetic/setup.bash" >> "/root/.bashrc" && \
+    echo "[ -f /workspace/catkin_ws/devel/setup.bash ] && source /workspace/catkin_ws/devel/setup.bash" >> "/root/.bashrc"
+
+WORKDIR /workspace/catkin_ws
+
+ENTRYPOINT ["/bin/bash"]

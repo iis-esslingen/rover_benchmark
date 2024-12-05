@@ -1,0 +1,81 @@
+{
+    "name": "SLAM Testing-Suite",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "container",
+    "overrideCommand": true,
+    "initializeCommand": [
+        ".devcontainer/initialize_command"
+    ],
+    "postStartCommand": [
+        ".devcontainer/post_start_command"
+    ],
+    "workspaceFolder": "/workspace",
+    "containerEnv": {
+        "DISPLAY": "${localEnv:DISPLAY::0}",
+        "ROS_AUTOMATIC_DISCORVERY_RANGE": "LOCALHOST",
+        "ROS_DOMAIN_ID": "42"
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                // General settings.
+                "editor.formatOnSave": true,
+                "files.exclude": {
+                    "**/__pycache__": true
+                },
+                // "files.associations": {
+                //     "*.html": "jinja-html"
+                // },
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash"
+                    }
+                },
+                "docker.languageserver.formatter.ignoreMultilineInstructions": true,
+                // Python settings.
+                "python.languageServer": "Pylance",
+                "python.analysis.extraPaths": [
+                    "/opt/ros/noetic/lib/python3/dist-packages",
+                    // "${containerWorkspaceFolder}/slam_testing_suite/catkin_ws/src/evaluation/src",
+                    // "${containerWorkspaceFolder}/slam_testing_suite/catkin_ws/src/extraction/src",
+                    // "${containerWorkspaceFolder}/slam_testing_suite/catkin_ws/src/shared/src"
+                ],
+                "isort.args": [
+                    "--profile",
+                    "black"
+                ],
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter",
+                    "editor.codeActionsOnSave": {
+                        "source.organizeImports": true
+                    }
+                },
+                // // C/C++ settings.
+                // "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+                // "C_Cpp.default.compileCommands": "${containerWorkspaceFolder}/slam_testing_suite/catkin_ws/build/merged_compile_commands.json",
+                // // HTML/CSS settings.
+                // "html.format.unformattedContentDelimiter": "<!--toggle formatting-->",
+                // "html.format.wrapLineLength": 0,
+                // "css.format.spaceAroundSelectorSeparator": true
+            },
+            // "extensions": [
+            //     // Python extensions.
+            //     "njpwerner.autodocstring",
+            //     "ms-python.python",
+            //     "ms-python.isort",
+            //     "ms-python.black-formatter",
+            //     // C++ extensions.
+            //     "ms-vscode.cpptools-extension-pack",
+            //     "jeff-hykin.better-cpp-syntax",
+            //     "josetr.cmake-language-support-vscode",
+            //     "cschlosser.doxdocgen",
+            //     // Other extensions.
+            //     "ms-azuretools.vscode-docker",
+            //     "tomoki1207.pdf",
+            //     "samuelcolvin.jinjahtml",
+            //     "Optuna.optuna-dashboard"
+            // ]
+        }
+    }
+}
