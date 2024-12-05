@@ -19,14 +19,18 @@ if [[ ! -d "/workspace/DPV-SLAM" ]]; then
 
   wget https://www.dropbox.com/s/nap0u8zslspdwm4/models.zip && unzip models.zip
 
-  # ./Pangolin/scripts/install_prerequisites.sh recommended
-  mkdir Pangolin/build && cd Pangolin/build
-  cmake ..
-  make -j8
-  make install
-  cd ../..
+  # apt-get install --fix-missing
 
-  pip install ./DPViewer
+  # ./Pangolin/scripts/install_prerequisites.sh recommended
+  # mkdir Pangolin/build && cd Pangolin/build
+  # cmake ..
+  # make -j8
+  # make install
+  # cd ../..
+
+  # pip install ./DPViewer
+
+  # ldconfig
 fi
 
 echo ">>> End of post install script <<<" 

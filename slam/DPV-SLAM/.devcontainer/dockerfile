@@ -76,7 +76,7 @@ RUN mkdir -p /workspace/DPV-SLAM && \
     cd /workspace/DPV-SLAM && \
     conda env create -f environment.yml
 
-RUN echo ". activate dpv-slam" > ~/.bashrc
+RUN echo ". activate dpvo" > ~/.bashrc
 
 # Set entry commands
 ENTRYPOINT ["/bin/bash"]
