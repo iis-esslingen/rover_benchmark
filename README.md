@@ -40,10 +40,10 @@ python evaluate_rover \
 -  ```--base_data_path```: Specifies the base directory of the dataset sequence.
 -  ```--ground_truth_path```: Path to the ground truth file for the selected dataset sequence.
 -  ```output_path```: Directory where the resulting trajectories will be stored.
--  ```cameras```: List of cameras to be used for the evaluation. Choices: ```d435i```, ```t265```, or ```pi_cam```.
+-  ```cameras```: List of cameras to be used for the evaluation. Choices: `d435i`, `t265`, or `pi_cam`.
 -  ```trials```: The number of trials to execute for the evaluation.
 
-To enable Loop Closing for DPV-SLAM, add the argument: ```--opts LOOP_CLOSURE True```.
+To enable Loop Closing for DPV-SLAM, add the argument: `--opts LOOP_CLOSURE True`.
 
 </details> 
 
@@ -53,7 +53,7 @@ To enable Loop Closing for DPV-SLAM, add the argument: ```--opts LOOP_CLOSURE Tr
 
 We are using [our fork](https://github.com/iis-esslingen/DROID-SLAM) of the official [DROID-SLAM](https://github.com/princeton-vl/DROID-SLAM) implementation. 
 
-Separate scripts are provided for each camera in the ```DROID-SLAM/evaluation_scripts``` folder, namely ```test_rover_d435i.py```, ```test_rover_pi-cam-02.py```, and ```test_rover_t265.py```.
+Separate scripts are provided for each camera in the `DROID-SLAM/evaluation_scripts` folder, namely `test_rover_d435i.py`, `test_rover_pi-cam-02.py`, and `test_rover_t265.py`.
 
 Example to run the application and evaluation:
 
@@ -66,11 +66,11 @@ python evaluation_scripts/test_rover_d435i.py \
 
 #### Parameters:
 
--  ```--base_data_path```: Specifies the base directory of the dataset sequence.
--  ```--ground_truth_path```: Path to the ground truth file for the selected dataset sequence.
--  ```output_path```: Directory where the resulting trajectories will be stored.
+-  `--base_data_path`: Specifies the base directory of the dataset sequence.
+-  `--ground_truth_path`: Path to the ground truth file for the selected dataset sequence.
+-  `output_path`: Directory where the resulting trajectories will be stored.
 
-To test DROID-SLAM in RGBD mode (Camera D435i), add the flag ```--depth```, for Stereo mode (Camera T265) add ```--stereo```.
+To test DROID-SLAM in RGBD mode (Camera D435i), add the flag `--depth`, for Stereo mode (Camera T265) add `--stereo`.
 
 </details>
 
@@ -278,12 +278,12 @@ python raw_to_rosbag.py \
     [--imu_sync_strategy <imu_sync_strategy>]
 ```
 
-| **Argument**            | **Type**      | **Required** | **Description**                                                                                                          |
-|-------------------------|---------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
-| `input_directory`       | `str`         | Yes          | Path to the directory containing raw sensor data.                                                                         |
-| `output_bag`            | `str`         | No           | Path to the output ROS bag file. Defaults to `<input_directory>/rosbag.bag`.                                              |
-| `sensors`               | `list[str]`   | Yes          | List of sensors to include in the ROS bag. Choices are: `d435i`, `t265`, `pi_cam`, and `vn100`.                           |
-| `imu_sync_strategy`     | `str`         | No           | IMU synchronization strategy. Choices are: `merge` (default), `downsampling`, or `upsampling`.                            |
+#### Parameters:
+
+- `input_directory`: Path to the directory containing raw sensor data.
+- `output_bag`: Path to the output ROS bag file. Defaults to `<input_directory>/rosbag.bag`.
+- `sensors`: List of sensors to include in the ROS bag. Choices are: `d435i`, `t265`, `pi_cam`, and `vn100`.
+- `imu_sync_strategy`: IMU synchronization strategy. Choices are: `merge` (default), `downsampling`, or `upsampling`.
 
 The `--imu_sync_strategy` parameter defines how to synchronize IMU data from multiple sensors. The available options are:
 
