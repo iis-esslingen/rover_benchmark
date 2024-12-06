@@ -1,6 +1,10 @@
 <h1 align="center">
   The ROVER Visual SLAM Benchmark
+</h1>
 
+
+<h1 align="center">
+    
   ![Cover Figure](assets/cover-figure.png)
   
   [Project Page](https://iis-esslingen.github.io/rover/) | [Paper](https://arxiv.org/pdf/2412.02506) 
@@ -16,9 +20,7 @@ When running the Dockerfiles, the first step is to navigate to the directory whe
 ## SLAM Methods
 Each method is available as a Docker container. When running the Dockerfiles, the first step is to enter the directory where the dataset is stored, as it will be mounted inside the Docker container.
 
-### DPVO & DPV-SLAM
-
-<details>
+<details><summary>DPVO & DPV-SLAM</summary>
 
 We are using [our fork](https://github.com/iis-esslingen/DPV-SLAM) of the official [DPVO / DPV-SLAM](https://github.com/princeton-vl/DPVO) implementation. 
   
@@ -47,9 +49,7 @@ To enable Loop Closing for DPV-SLAM, add the argument: `--opts LOOP_CLOSURE True
 
 </details> 
 
-### DROID-SLAM
-
-<details>
+<details><summary>DROID-SLAM</summary>
 
 We are using [our fork](https://github.com/iis-esslingen/DROID-SLAM) of the official [DROID-SLAM](https://github.com/princeton-vl/DROID-SLAM) implementation. 
 
@@ -74,9 +74,8 @@ To test DROID-SLAM in RGBD mode (Camera D435i), add the flag `--depth`, for Ster
 
 </details>
 
-### OpenVINS
 
-<details>
+<details><summary>OpenVINS</summary>
 
 We are using [our fork](https://github.com/iis-esslingen/OpenVINS) of the official [OpenVINS](https://github.com/rpng/open_vins) implementation. 
 
@@ -114,9 +113,8 @@ roslaunch ov_msckf <launch_file> \
 
 </details>
 
-### VINS-Fusion
 
-<details>
+<details><summary>VINS-Fusion</summary>
 
 We are using [our fork](https://github.com/iis-esslingen/VINS-Fusion) of the official [VINS-Fusion](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion) implementation. 
 
@@ -160,9 +158,8 @@ roslaunch vins <launch_file> \
 
 </details>
 
-### SVO-Pro
 
-<details>
+<details><summary>SVO-Pro</summary>
 
 We are using [our fork](https://github.com/iis-esslingen/SVO-Pro) of the official [SVO-Pro](https://github.com/uzh-rpg/rpg_svo_pro_open) implementation. 
 
@@ -209,9 +206,8 @@ roslaunch svo_ros <launch_file> \
 
 </details>
 
-### ORB-SLAM3
 
-<details>
+<details><summary>ORB-SLAM3</summary>
 
 We are using [our fork](https://github.com/iis-esslingen/ORB-SLAM3) of the [ORB-SLAM3 ROS Wrapper](https://github.com/thien94/orb_slam3_ros) implementation. 
 
@@ -260,9 +256,8 @@ roslaunch orb_slam3_ros <launch_file> \
 
 ## Utilities
 
-### Convert Raw Dataset to Rosbag
 
-<details>
+<details><summary>Convert Raw Dataset to Rosbag</summary>
 
 `raw_to_rosbag.py` is a Python script designed to convert raw sensor data into a ROS bag file. This tool is useful for working with robotics datasets, enabling streamlined integration with ROS-based tools and workflows.
 
@@ -295,9 +290,8 @@ The `--imu_sync_strategy` parameter defines how to synchronize IMU data from mul
 
 </details>
 
-### Evaluation
+<details><summary>Evaluation</summary>
 
-<details>
   tbd.
 </details>
 
