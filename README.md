@@ -8,8 +8,9 @@
 
 <br>
 
-## Prerequisites
-The only required software is Docker. Each SLAM method comes with its own Docker container, making setup straightforward. We recommend using **VSCode** with the Docker extension for an enhanced development experience.
+## Getting Started
+The only required software is [Docker](https://www.docker.com/). Each SLAM method comes with its own Docker container, making setup straightforward. We recommend using VSCode with the Docker extension for an enhanced development experience. Additionally, we provide a Docker container with tools for evaluating and handling the ROVER dataset.
+
 When running the Dockerfiles, the first step is to navigate to the directory where the dataset is stored, as it will be mounted inside the Docker container.
 
 ## SLAM Methods
@@ -23,7 +24,7 @@ We are using [our fork](https://github.com/iis-esslingen/DPV-SLAM) of the offici
   
 **Note:** The container currently does not support visualization.
 
-To run the application and evaluation:
+Example to run the application and evaluation:
 
 ```bash
 python evaluate_rover \
@@ -33,6 +34,14 @@ python evaluate_rover \
     --cameras d435i t265 pi_cam \
     --trials 5
 ```
+
+#### Parameters:
+
+-  ```--base_data_path```: Specifies the base directory of the dataset sequence.
+-  ```--ground_truth_path```: Path to the ground truth file for the selected dataset sequence.
+-  ```output_path```: Directory where the resulting trajectories will be stored.
+-  ```cameras```: List of cameras to be used for the evaluation. Choices: ```d435i```, ```t265```, or ```pi_cam```.
+-  ```trials```: The number of trials to execute for the evaluation.
 
 To enable Loop Closing for DPV-SLAM, add the argument: ```--opts LOOP_CLOSURE True```.
 
@@ -44,9 +53,9 @@ To enable Loop Closing for DPV-SLAM, add the argument: ```--opts LOOP_CLOSURE Tr
 
 We are using [our fork](https://github.com/iis-esslingen/DROID-SLAM) of the official [DROID-SLAM](https://github.com/princeton-vl/DROID-SLAM) implementation. 
 
-Separate scripts are provided for each camera in the ```DROID-SLAM/evaluation_scripts``` folder.
+Separate scripts are provided for each camera in the ```DROID-SLAM/evaluation_scripts``` folder, namely ```test_rover_d435i.py```, ```test_rover_pi-cam-02.py```, and ```test_rover_t265.py```.
 
-To run the application and evaluation:
+Example to run the application and evaluation:
 
 ```bash
 python evaluation_scripts/test_rover_d435i.py \
@@ -54,6 +63,12 @@ python evaluation_scripts/test_rover_d435i.py \
     --ground_truth_path /garden_small/2023-08-18/ground_truth.txt \
     --output_path ./rover_trajectories
 ```
+
+#### Parameters:
+
+-  ```--base_data_path```: Specifies the base directory of the dataset sequence.
+-  ```--ground_truth_path```: Path to the ground truth file for the selected dataset sequence.
+-  ```output_path```: Directory where the resulting trajectories will be stored.
 
 To test DROID-SLAM in RGBD mode (Camera D435i), add the flag ```--depth```, for Stereo mode (Camera T265) add ```--stereo```.
 
@@ -243,7 +258,7 @@ roslaunch orb_slam3_ros <launch_file> \
  
 </details>
 
-## Utils
+## Utilities
 
 ### Convert Raw Dataset to Rosbag
 
