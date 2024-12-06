@@ -1,23 +1,29 @@
 <h1 align="center">
   The ROVER Visual SLAM Benchmark
 
+  ![Cover Figure](assets/cover-figure.png)
   
-  
-  [Project Page](https://iis-esslingen.github.io/rover/) | [Paper](https://arxiv.org/pdf/2412.02506)
+  [Project Page](https://iis-esslingen.github.io/rover/) | [Paper](https://arxiv.org/pdf/2412.02506) 
 </h1>
 
 <br>
 
 ## Prerequisites
 The only required software is Docker. Each SLAM method comes with its own Docker container, making setup straightforward. We recommend using **VSCode** with the Docker extension for an enhanced development experience.
+When running the Dockerfiles, the first step is to navigate to the directory where the dataset is stored, as it will be mounted inside the Docker container.
 
 ## SLAM Methods
-Each method is available as a Docker container.
+Each method is available as a Docker container. When running the Dockerfiles, the first step is to enter the directory where the dataset is stored, as it will be mounted inside the Docker container.
 
 ### DPVO & DPV-SLAM
+
+<details>
+
+We are using [our fork](https://github.com/iis-esslingen/DPV-SLAM) of the official [DPVO / DPV-SLAM](https://github.com/princeton-vl/DPVO) implementation. 
+  
 **Note:** The container currently does not support visualization.
 
-To run the evaluation:
+To run the application and evaluation:
 
 ```bash
 python evaluate_rover \
@@ -30,11 +36,18 @@ python evaluate_rover \
 
 To enable Loop Closing for DPV-SLAM, add the argument: ```--opts LOOP_CLOSURE True```.
 
+</details> 
+
 ### DROID-SLAM
+
+<details>
+
+We are using [our fork](https://github.com/iis-esslingen/DROID-SLAM) of the official [DROID-SLAM](https://github.com/princeton-vl/DROID-SLAM) implementation. 
 
 Separate scripts are provided for each camera in the ```DROID-SLAM/evaluation_scripts``` folder.
 
-Example:
+To run the application and evaluation:
+
 ```bash
 python evaluation_scripts/test_rover_d435i.py \
     --data_path /garden_small/2023-08-18 \
@@ -44,7 +57,13 @@ python evaluation_scripts/test_rover_d435i.py \
 
 To test DROID-SLAM in RGBD mode (Camera D435i), add the flag ```--depth```, for Stereo mode (Camera T265) add ```--stereo```.
 
+</details>
+
 ### OpenVINS
+
+<details>
+
+We are using [our fork](https://github.com/iis-esslingen/OpenVINS) of the official [OpenVINS](https://github.com/rpng/open_vins) implementation. 
 
 To launch the application:
 
@@ -78,8 +97,13 @@ roslaunch ov_msckf <launch_file> \
 
 - `traj_file_name`: *(Optional)* Specifies the file path where the estimated trajectory should be saved.
 
+</details>
 
 ### VINS-Fusion
+
+<details>
+
+We are using [our fork](https://github.com/iis-esslingen/VINS-Fusion) of the official [VINS-Fusion](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion) implementation. 
 
 To launch the application:
 
@@ -119,8 +143,13 @@ roslaunch vins <launch_file> \
     - `"true"`: To enable loop closing.
     - `"false"`: To disable loop closing.
 
+</details>
 
 ### SVO-Pro
+
+<details>
+
+We are using [our fork](https://github.com/iis-esslingen/SVO-Pro) of the official [SVO-Pro](https://github.com/uzh-rpg/rpg_svo_pro_open) implementation. 
 
 To launch the application:
 
@@ -163,8 +192,13 @@ roslaunch svo_ros <launch_file> \
     - `"true"`: To enable loop closing.
     - `"false"`: To disable loop closing.
 
+</details>
 
 ### ORB-SLAM3
+
+<details>
+
+We are using [our fork](https://github.com/iis-esslingen/ORB-SLAM3) of the [ORB-SLAM3 ROS Wrapper](https://github.com/thien94/orb_slam3_ros) implementation. 
 
 To launch the application:
 
@@ -206,10 +240,14 @@ roslaunch orb_slam3_ros <launch_file> \
 - `do_lc`: *(Optional)* Specifies whether to enable loop closing. Set to either:
     - `"true"`: To enable loop closing.
     - `"false"`: To disable loop closing.
+ 
+</details>
 
 ## Utils
 
-### raw_to_rosbag.py
+### Convert Raw Dataset to Rosbag
+
+<details>
 
 `raw_to_rosbag.py` is a Python script designed to convert raw sensor data into a ROS bag file. This tool is useful for working with robotics datasets, enabling streamlined integration with ROS-based tools and workflows.
 
@@ -239,6 +277,14 @@ The `--imu_sync_strategy` parameter defines how to synchronize IMU data from mul
 - **downsampling**: This strategy reduces the frequency of IMU data to match the lowest rate among the available sensors. It can be useful when the sensors operate at different frequencies, and you want to ensure synchronization at a lower rate.
 
 - **upsampling**: This strategy increases the frequency of IMU data to match the highest rate among the available sensors. It interpolates data to achieve a higher frequency, ensuring synchronization at the rate of the fastest sensor.
+
+</details>
+
+### Evaluation
+
+<details>
+  tbd.
+</details>
 
 ## Citing
 If you find our work useful, please consider citing:
