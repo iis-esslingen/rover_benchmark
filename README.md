@@ -29,7 +29,7 @@ We are using [our fork](https://github.com/iis-esslingen/DPV-SLAM) of the offici
 Example to run the application and evaluation:
 
 ```bash
-python evaluate_rover \
+python evaluate_rover.py \
     --base_data_path /garden_small/2023-08-18 \
     --ground_truth_path /garden_small/2023-08-18/ground_truth.txt \
     --output_path ./rover_trajectories \
