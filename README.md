@@ -91,23 +91,23 @@ roslaunch ov_msckf <launch_file> \
 #### Parameters:
 
 - `launch_file`: Specifies the launch file to use. Choices include:
-    - `"rover_mono-inertial_d435i_external.launch"`
-    - `"rover_mono-inertial_d435i_internal.launch"`
-    - `"rover_mono-inertial_pi-cam-02_external.launch"`
-    - `"rover_mono-inertial_t265_external.launch"`
-    - `"rover_mono-inertial_t265_internal.launch"`
-    - `"rover_stereo-inertial_t265_external.launch"`
-    - `"rover_stereo-inertial_t265_internal.launch"`
+    - `rover_mono-inertial_d435i_external.launch`
+    - `rover_mono-inertial_d435i_internal.launch`
+    - `rover_mono-inertial_pi-cam-02_external.launch`
+    - `rover_mono-inertial_t265_external.launch`
+    - `rover_mono-inertial_t265_internal.launch`
+    - `rover_stereo-inertial_t265_external.launch`
+    - `rover_stereo-inertial_t265_internal.launch`
 
 - `do_bag`: *(Optional)* Specifies whether to replay a bag. Set to either:
-    - `"true"`: To replay a bag.
-    - `"false"`: To not replay a bag.
+    - `true`: To replay a bag.
+    - `false`: To not replay a bag.
 
 - `bag`: *(Optional)* Specifies the path to the rosbag file.
 
 - `do_save_traj`: *(Optional)* Specifies whether to save a predicted trajectory. Set to either:
-    - `"true"`: To save the trajectory.
-    - `"false"`: To not save the trajectory.
+    - `true`: To save the trajectory.
+    - `false`: To not save the trajectory.
 
 - `traj_file_name`: *(Optional)* Specifies the file path where the estimated trajectory should be saved.
 
@@ -131,30 +131,30 @@ roslaunch vins <launch_file> \
 #### Parameters:
 
 - `launch_file`: Specifies the launch file to use. Choices include:
-    - `"rover_mono-inertial_d435i_external.launch"`
-    - `"rover_mono-inertial_d435i_internal.launch"`
-    - `"rover_mono-inertial_pi-cam-02_external.launch"`
-    - `"rover_mono-inertial_t265_external.launch"`
-    - `"rover_mono-inertial_t265_internal.launch"`
-    - `"rover_stereo_t265.launch"`
-    - `"rover_stereo-inertial_t265_external.launch"`
-    - `"rover_stereo-inertial_t265_internal.launch"`
+    - `rover_mono-inertial_d435i_external.launch`
+    - `rover_mono-inertial_d435i_internal.launch`
+    - `rover_mono-inertial_pi-cam-02_external.launch`
+    - `rover_mono-inertial_t265_external.launch`
+    - `rover_mono-inertial_t265_internal.launch`
+    - `rover_stereo_t265.launch`
+    - `rover_stereo-inertial_t265_external.launch`
+    - `rover_stereo-inertial_t265_internal.launch`
 
 - `do_bag`: *(Optional)* Specifies whether to replay a bag. Set to either:
-    - `"true"`: To replay a bag.
-    - `"false"`: To not replay a bag.
+    - `true`: To replay a bag.
+    - `false`: To not replay a bag.
 
 - `bag`: *(Optional)* Specifies the path to the rosbag file.
 
 - `do_save_traj`: *(Optional)* Specifies whether to save a predicted trajectory. Set to either:
-    - `"true"`: To save the trajectory.
-    - `"false"`: To not save the trajectory.
+    - `true`: To save the trajectory.
+    - `false`: To not save the trajectory.
 
 - `traj_file_name`: *(Optional)* Specifies the file path where the estimated trajectory should be saved.
 
 - `do_lc`: *(Optional)* Specifies whether to enable loop closing. Set to either:
-    - `"true"`: To enable loop closing.
-    - `"false"`: To disable loop closing.
+    - `true`: To enable loop closing.
+    - `false`: To disable loop closing.
 
 </details>
 
@@ -176,33 +176,33 @@ roslaunch svo_ros <launch_file> \
 #### Parameters:
 
 - `launch_file`: Specifies the launch file to use. Choices include:
-    - `"rover_mono_d435i.launch"`
-    - `"rover_mono_pi-cam-02.launch"`
-    - `"rover_mono_t265.launch"`
-    - `"rover_mono-inertial_d435i_external.launch"`
-    - `"rover_mono-inertial_d435i_internal.launch"`
-    - `"rover_mono-inertial_pi-cam-02_external.launch"`
-    - `"rover_mono-inertial_t265_external.launch"`
-    - `"rover_mono-inertial_t265_internal.launch"`
-    - `"rover_stereo_t265.launch"`
-    - `"rover_stereo-inertial_t265_external.launch"`
-    - `"rover_stereo-inertial_t265_internal.launch"`
+    - `rover_mono_d435i.launch`
+    - `rover_mono_pi-cam-02.launch`
+    - `rover_mono_t265.launch`
+    - `rover_mono-inertial_d435i_external.launch`
+    - `rover_mono-inertial_d435i_internal.launch`
+    - `rover_mono-inertial_pi-cam-02_external.launch`
+    - `rover_mono-inertial_t265_external.launch`
+    - `rover_mono-inertial_t265_internal.launch`
+    - `rover_stereo_t265.launch`
+    - `rover_stereo-inertial_t265_external.launch`
+    - `rover_stereo-inertial_t265_internal.launch`
 
 - `do_bag`: *(Optional)* Specifies whether to replay a bag. Set to either:
-    - `"true"`: To replay a bag.
-    - `"false"`: To not replay a bag.
+    - `true`: To replay a bag.
+    - `false`: To not replay a bag.
 
 - `bag`: *(Optional)* Specifies the path to the rosbag file.
 
 - `do_save_traj`: *(Optional)* Specifies whether to save a predicted trajectory. Set to either:
-    - `"true"`: To save the trajectory.
-    - `"false"`: To not save the trajectory.
+    - `true`: To save the trajectory.
+    - `false`: To not save the trajectory.
 
 - `traj_file_name`: *(Optional)* Specifies the file path where the estimated trajectory should be saved.
 
 - `do_lc`: *(Optional)* Specifies whether to enable loop closing. Set to either:
-    - `"true"`: To enable loop closing.
-    - `"false"`: To disable loop closing.
+    - `true`: To enable loop closing.
+    - `false`: To disable loop closing.
 
 </details>
 
@@ -224,33 +224,33 @@ roslaunch orb_slam3_ros <launch_file> \
 #### Parameters:
 
 - `launch_file`: Specifies the launch file to use. Choices include:
-    - `"rover_mono_d435i.launch"`
-    - `"rover_mono_pi-cam-02.launch"`
-    - `"rover_mono_t265.launch"`
-    - `"rover_mono-inertial_d435i_external.launch"`
-    - `"rover_mono-inertial_d435i_internal.launch"`
-    - `"rover_mono-inertial_pi-cam-02_external.launch"`
-    - `"rover_mono-inertial_t265_external.launch"`
-    - `"rover_mono-inertial_t265_internal.launch"`
-    - `"rover_stereo_t265.launch"`
-    - `"rover_stereo-inertial_t265_external.launch"`
-    - `"rover_stereo-inertial_t265_internal.launch"`
+    - `rover_mono_d435i.launch`
+    - `rover_mono_pi-cam-02.launch`
+    - `rover_mono_t265.launch`
+    - `rover_mono-inertial_d435i_external.launch`
+    - `rover_mono-inertial_d435i_internal.launch`
+    - `rover_mono-inertial_pi-cam-02_external.launch`
+    - `rover_mono-inertial_t265_external.launch`
+    - `rover_mono-inertial_t265_internal.launch`
+    - `rover_stereo_t265.launch`
+    - `rover_stereo-inertial_t265_external.launch`
+    - `rover_stereo-inertial_t265_internal.launch`
 
 - `do_bag`: *(Optional)* Specifies whether to replay a bag. Set to either:
-    - `"true"`: To replay a bag.
-    - `"false"`: To not replay a bag.
+    - `true`: To replay a bag.
+    - `false`: To not replay a bag.
 
 - `bag`: *(Optional)* Specifies the path to the rosbag file.
 
 - `do_save_traj`: *(Optional)* Specifies whether to save a predicted trajectory. Set to either:
-    - `"true"`: To save the trajectory.
-    - `"false"`: To not save the trajectory.
+    - `true`: To save the trajectory.
+    - `false`: To not save the trajectory.
 
 - `traj_file_name`: *(Optional)* Specifies the file path where the estimated trajectory should be saved.
 
 - `do_lc`: *(Optional)* Specifies whether to enable loop closing. Set to either:
-    - `"true"`: To enable loop closing.
-    - `"false"`: To disable loop closing.
+    - `true`: To enable loop closing.
+    - `false`: To disable loop closing.
  
 </details>
 
