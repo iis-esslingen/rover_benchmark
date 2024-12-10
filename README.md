@@ -235,6 +235,9 @@ roslaunch orb_slam3_ros <launch_file> \
     - `rover_stereo_t265.launch`
     - `rover_stereo-inertial_t265_external.launch`
     - `rover_stereo-inertial_t265_internal.launch`
+    - `rover_rgbd_d435i.launch`
+    - `rover_rgbd-inertial_d435i_external.launch`
+    - `rover_rgbd-inertial_d435i_internal.launch`
 
 - `do_bag`: *(Optional)* Specifies whether to replay a bag. Set to either:
     - `true`: To replay a bag.
