@@ -39,11 +39,11 @@ python evaluate_rover.py \
 
 #### Parameters:
 
--  ```--base_data_path```: Specifies the base directory of the dataset sequence.
--  ```--ground_truth_path```: Path to the ground truth file for the selected dataset sequence.
--  ```output_path```: Directory where the resulting trajectories will be stored.
--  ```cameras```: List of cameras to be used for the evaluation. Choices: `d435i`, `t265`, or `pi_cam`.
--  ```trials```: The number of trials to execute for the evaluation.
+-  `base_data_path`: Specifies the base directory of the dataset sequence.
+-  `ground_truht_path`: Path to the ground truth file for the selected dataset sequence.
+-  `output_path`: Directory where the resulting trajectories will be stored.
+-  `cameras`: List of cameras to be used for the evaluation. Choices: `d435i`, `t265`, or `pi_cam`.
+-  `trials`: The number of trials to execute for the evaluation.
 
 To enable Loop Closing for DPV-SLAM, add the argument: `--opts LOOP_CLOSURE True`.
 
@@ -66,8 +66,8 @@ python evaluation_scripts/test_rover_d435i.py \
 
 #### Parameters:
 
--  `--base_data_path`: Specifies the base directory of the dataset sequence.
--  `--ground_truth_path`: Path to the ground truth file for the selected dataset sequence.
+-  `base_data_path`: Specifies the base directory of the dataset sequence.
+-  `ground_truth_path`: Path to the ground truth file for the selected dataset sequence.
 -  `output_path`: Directory where the resulting trajectories will be stored.
 
 To test DROID-SLAM in RGBD mode (Camera D435i), add the flag `--depth`, for Stereo mode (Camera T265) add `--stereo`.
