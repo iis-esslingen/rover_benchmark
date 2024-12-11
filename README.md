@@ -20,6 +20,8 @@ The only required software is [Docker](https://www.docker.com/). Each SLAM metho
 
 When running the Dockerfiles, the first step is to navigate to the directory where the dataset is stored, as it will be mounted inside the Docker container.
 
+Tested with Ubuntu 22.04.
+
 ## SLAM Methods
 Each method is available as a Docker container. When running the Dockerfiles, the first step is to enter the directory where the dataset is stored, as it will be mounted inside the Docker container.
 
