@@ -7,10 +7,13 @@
     
   ![Cover Figure](assets/cover-figure.png)
   
-  [Project Page](https://iis-esslingen.github.io/rover/) | [Paper](https://arxiv.org/pdf/2412.02506) 
+  
+[![Project Page](https://img.shields.io/badge/Web-ROVER-blue.svg?style=plastic)](https://iis-esslingen.github.io/rover/)  [![arXiv](https://img.shields.io/badge/arXiv-2412.02506-b31b1b.svg?style=plastic)](https://arxiv.org/abs/2412.02506)
 </h1>
 
 <br>
+
+
 
 ## Getting Started
 The only required software is [Docker](https://www.docker.com/). Each SLAM method comes with its own Docker container, making setup straightforward. We recommend using VSCode with the Docker extension for an enhanced development experience. Additionally, we provide a Docker container with tools for evaluating and handling the ROVER dataset.
