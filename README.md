@@ -20,7 +20,7 @@ The only required software is [Docker](https://www.docker.com/). Each SLAM metho
 
 When running the Dockerfiles, the first step is to navigate to the directory where the dataset is stored, as it will be mounted inside the Docker container.
 
-Tested with Ubuntu 22.04.
+Tested on Ubuntu 20.04 and 22.04 with CUDA versions 11 and 12, using NVIDIA GPUs including the RTX 4090, A5000, and A6000.
 
 ## SLAM Methods
 Each method is available as a Docker container. When running the Dockerfiles, the first step is to enter the directory where the dataset is stored, as it will be mounted inside the Docker container.
@@ -45,7 +45,7 @@ python evaluate_rover.py \
 #### Parameters:
 
 -  `base_data_path`: Specifies the base directory of the dataset sequence.
--  `ground_truht_path`: Path to the ground truth file for the selected dataset sequence.
+-  `ground_truth_path`: Path to the ground truth file for the selected dataset sequence.
 -  `output_path`: Directory where the resulting trajectories will be stored.
 -  `cameras`: List of cameras to be used for the evaluation. Choices: `d435i`, `t265`, or `pi_cam`.
 -  `trials`: The number of trials to execute for the evaluation.
