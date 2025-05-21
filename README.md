@@ -9,12 +9,16 @@
   
   
 [![Project Page](https://img.shields.io/badge/Web-ROVER-blue.svg?style=plastic)](https://iis-esslingen.github.io/rover/)  [![arXiv](https://img.shields.io/badge/arXiv-2412.02506-b31b1b.svg?style=plastic)](https://arxiv.org/abs/2412.02506)
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fiis-esslingen%2Frover_benchmark&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 </h1>
 
 <br>
 
 
+## News <a name="news"></a>
+- **`[2024/12/05]`** Initial code release.
+- **`[2025/05/20]`** ROVER is accepted to IEEE Transactions on Robotics.
+- **`[2025/05/xx]`** Dataset release.
 
 ## Getting Started
 The only required software is [Docker](https://www.docker.com/). Each SLAM method comes with its own Docker container, making setup straightforward. We recommend using VSCode with the Docker extension for an enhanced development experience. Additionally, we provide a Docker container with tools for evaluating and handling the ROVER dataset.
@@ -307,10 +311,10 @@ The `--imu_sync_strategy` parameter defines how to synchronize IMU data from mul
 ## Citing
 If you find our work useful, please consider citing:
 ```bibtex
-@article{schmidt2024rover,
+@article{schmidt2025rover,
       title={ROVER: A Multi-Season Dataset for Visual SLAM}, 
-      author={Fabian Schmidt and Constantin Blessing and Markus Enzweiler and Abhinav Valada},
-      year={2024},
+      author={Fabian Schmidt and Julian Daubermann and Marcel Mitschke and Constantin Blessing and Stefan Meyer and Markus Enzweiler and Abhinav Valada},
+      year={2025},
       eprint={2412.02506},
       archivePrefix={arXiv},
       primaryClass={cs.RO},
