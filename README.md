@@ -20,7 +20,7 @@
 ## News <a name="news"></a>
 - **`[2024/12/05]`** Initial code release.
 - **`[2025/05/20]`** ROVER is accepted to IEEE Transactions on Robotics.
-- **`[2025/05/25]`** Dataset released on HuggingFace.
+- **`[2025/05/25]`** Dataset released on [HuggingFace](https://huggingface.co/datasets/iis-esslingen/ROVER), see Utility section for HuggingFace [download script](https://github.com/iis-esslingen/rover_benchmark/blob/main/utils/download.py).
 
 ## Getting Started
 The only required software is [Docker](https://www.docker.com/). Each SLAM method comes with its own Docker container, making setup straightforward. We recommend using VSCode with the Docker extension for an enhanced development experience. Additionally, we provide a Docker container with tools for evaluating and handling the ROVER dataset.
@@ -274,6 +274,28 @@ roslaunch orb_slam3_ros <launch_file> \
 
 ## Utilities
 
+<details><summary>HuggingFace Download Script</summary>
+
+`download.py` is a Python script to download chunked zip-files from HuggingFace.
+
+### Command Syntax
+
+```bash
+python3 download.py \
+    --locations <locations> \
+    --scenarios <scenarios> \
+    --save-dir <save-dir> \
+    [--keep-parts]
+```
+
+#### Parameters:
+
+- `locations`: Dataset locations to download; one or more of (`campus_small`, `campus_large`, `garden_small`, `garden_large`, `park`). Default is all locations.
+- `scenarios`: Scenarios to download; one or more of (`summer`, `autumn`, `winter`, `spring`, `day`, `dusk`, `night`, `night-light`). Default is all scenarios.
+- `save-dir`: Path to the directory in which to save files (default: current directory).
+- `keep-parts`: If set, retain chunked part files after successful reconstruction.
+
+</details>
 
 <details><summary>Convert Raw Dataset to Rosbag</summary>
 
@@ -284,7 +306,7 @@ The script supports various sensors and offers customization options through com
 ### Command Syntax
 
 ```bash
-python raw_to_rosbag.py \
+python3 raw_to_rosbag.py \
     --input_directory <input_directory> \
     --output_bag <output_bag> \
     --sensors <sensor_list> 
