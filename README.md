@@ -287,8 +287,7 @@ The script supports various sensors and offers customization options through com
 python raw_to_rosbag.py \
     --input_directory <input_directory> \
     --output_bag <output_bag> \
-    --sensors <sensor_list> \
-    [--imu_sync_strategy <imu_sync_strategy>]
+    --sensors <sensor_list> 
 ```
 
 #### Parameters:
@@ -296,15 +295,6 @@ python raw_to_rosbag.py \
 - `input_directory`: Path to the directory containing raw sensor data.
 - `output_bag`: Path to the output ROS bag file. Defaults to `<input_directory>/rosbag.bag`.
 - `sensors`: List of sensors to include in the ROS bag. Choices are: `d435i`, `t265`, `pi_cam`, and `vn100`.
-- `imu_sync_strategy`: IMU synchronization strategy. Choices are: `merge` (default), `downsampling`, or `upsampling`.
-
-The `--imu_sync_strategy` parameter defines how to synchronize IMU data from multiple sensors. The available options are:
-
-- **merge (default)**: This strategy combines IMU data from multiple sources by fusing the accelerometer and gyrometer readings. It ensures that the data is aligned and integrated into a single stream.
-  
-- **downsampling**: This strategy reduces the frequency of IMU data to match the lowest rate among the available sensors. It can be useful when the sensors operate at different frequencies, and you want to ensure synchronization at a lower rate.
-
-- **upsampling**: This strategy increases the frequency of IMU data to match the highest rate among the available sensors. It interpolates data to achieve a higher frequency, ensuring synchronization at the rate of the fastest sensor.
 
 </details>
 
