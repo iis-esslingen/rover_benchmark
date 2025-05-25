@@ -18,7 +18,7 @@
 ## News <a name="news"></a>
 - **`[2024/12/05]`** Initial code release.
 - **`[2025/05/20]`** ROVER is accepted to IEEE Transactions on Robotics.
-- **`[2025/05/xx]`** Dataset release.
+- **`[2025/05/25]`** Dataset released on HuggingFace.
 
 ## Getting Started
 The only required software is [Docker](https://www.docker.com/). Each SLAM method comes with its own Docker container, making setup straightforward. We recommend using VSCode with the Docker extension for an enhanced development experience. Additionally, we provide a Docker container with tools for evaluating and handling the ROVER dataset.
@@ -26,6 +26,9 @@ The only required software is [Docker](https://www.docker.com/). Each SLAM metho
 When running the Dockerfiles, the first step is to navigate to the directory where the dataset is stored, as it will be mounted inside the Docker container.
 
 Tested on Ubuntu 20.04 and 22.04 with CUDA versions 11 and 12, using NVIDIA GPUs including the RTX 4090, A5000, and A6000.
+
+## Dataset
+The dataset can be found here: [https://huggingface.co/datasets/iis-esslingen/ROVER](https://huggingface.co/datasets/iis-esslingen/ROVER).
 
 ## SLAM Methods
 Each method is available as a Docker container. When running the Dockerfiles, the first step is to enter the directory where the dataset is stored, as it will be mounted inside the Docker container.
