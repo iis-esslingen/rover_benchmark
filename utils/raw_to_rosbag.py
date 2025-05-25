@@ -85,45 +85,9 @@ class SensorDataHandler():
     def _add_imu_data_to_bag(
         self,
         imu_data: pandas.DataFrame,
-        imu_synchronization_strategy: str,
         bag: rosbag.Bag,
         topic_name: str,
     ) -> None:
-
-        accelerometer_frequency = 1 / (
-            imu_data.dropna(subset=[imu_data.columns[0]])
-            .index.to_series()
-            .diff()
-            .mean()
-            .total_seconds()
-        )
-
-        gyroscope_frequency = 1 / (
-            imu_data.dropna(subset=[imu_data.columns[1]])
-            .index.to_series()
-            .diff()
-            .mean()
-            .total_seconds()
-        )
-
-        if imu_synchronization_strategy == "merge":
-            columns = imu_data.columns
-        elif imu_synchronization_strategy == "downsampling":
-            columns = (
-                imu_data.columns[:3]
-                if accelerometer_frequency > gyroscope_frequency
-                else imu_data.columns[3:]
-            )
-        else:
-            columns = (
-                imu_data.columns[:3]
-                if accelerometer_frequency < gyroscope_frequency
-                else imu_data.columns[3:]
-            )
-
-        imu_data[columns] = imu_data[columns].apply(
-            lambda columns: columns.interpolate(method="time")
-        )
 
         imu_data.dropna(inplace=True)
 
@@ -150,35 +114,27 @@ class IntelD435iCameraHandler(SensorDataHandler):
         self,
         input_directory: str,
         bag: rosbag.Bag,
-        imu_synchronization_strategy: str,
     ) -> None:
 
         self._add_images_to_bag(
             bag=bag,
-            input_directory=os.path.join(input_directory, "d435i", "rgb"),
+            input_directory=os.path.join(input_directory, "realsense_D435i", "rgb"),
             topic_name="/d435i/rgb_image",
             encoding="bgr8",
         )
         self._add_images_to_bag(
             bag=bag,
-            input_directory=os.path.join(input_directory, "d435i", "depth"),
+            input_directory=os.path.join(input_directory, "realsense_D435i", "depth"),
             topic_name="/d435i/depth_image",
             encoding="16UC1",
             is_depth=True,
         )
 
-        accelerometer_filepath = os.path.join(input_directory, "d435i", "accel.csv")
-        accelerometer_data = pandas.read_csv(accelerometer_filepath)
-
-        gyroscope_filepath = os.path.join(input_directory, "d435i", "gyro.csv")
-        gyroscope_data = pandas.read_csv(gyroscope_filepath)
-
-        imu_data = pandas.merge(
-            accelerometer_data,
-            gyroscope_data,
-            how="outer",
-            on="timestamp",
-            sort=True,
+        imu_data = pandas.read_csv(
+            os.path.join(input_directory, "realsense_D435i", "imu", "imu.txt"), 
+            sep=",",
+            header=None,
+            names=["timestamp", "acc_x", "acc_y", "acc_z", "gyro_x", "gyro_y", "gyro_z"]
         )
 
         imu_data = imu_data.set_index(
@@ -187,7 +143,6 @@ class IntelD435iCameraHandler(SensorDataHandler):
 
         self._add_imu_data_to_bag(
             imu_data,
-            imu_synchronization_strategy,
             bag,
             "/d435i/imu",
         )
@@ -198,34 +153,26 @@ class IntelT265CameraHandler(SensorDataHandler):
         self,
         input_directory: str,
         bag: rosbag.Bag,
-        imu_synchronization_strategy: str,
     ) -> None:
 
         self._add_images_to_bag(
             bag=bag,
-            input_directory=os.path.join(input_directory, "t265", "cam_left"),
+            input_directory=os.path.join(input_directory, "realsense_T265", "cam_left"),
             topic_name="/t265/image_left",
             encoding="mono8",
         )
         self._add_images_to_bag(
             bag=bag,
-            input_directory=os.path.join(input_directory, "t265", "cam_right"),
+            input_directory=os.path.join(input_directory, "realsense_T265", "cam_right"),
             topic_name="/t265/image_right",
             encoding="mono8",
         )
 
-        accelerometer_filepath = os.path.join(input_directory, "t265", "accel.csv")
-        accelerometer_data = pandas.read_csv(accelerometer_filepath)
-
-        gyroscope_filepath = os.path.join(input_directory, "t265", "gyro.csv")
-        gyroscope_data = pandas.read_csv(gyroscope_filepath)
-
-        imu_data = pandas.merge(
-            accelerometer_data,
-            gyroscope_data,
-            how="outer",
-            on="timestamp",
-            sort=True,
+        imu_data = pandas.read_csv(
+            os.path.join(input_directory, "realsense_T265", "imu", "imu.txt"), 
+            sep=",",
+            header=None,
+            names=["timestamp", "acc_x", "acc_y", "acc_z", "gyro_x", "gyro_y", "gyro_z"]
         )
 
         imu_data = imu_data.set_index(
@@ -234,7 +181,6 @@ class IntelT265CameraHandler(SensorDataHandler):
 
         self._add_imu_data_to_bag(
             imu_data,
-            imu_synchronization_strategy,
             bag,
             "/t265/imu",
         )
@@ -245,7 +191,6 @@ class PiCameraHandler(SensorDataHandler):
         self,
         input_directory: str,
         bag: rosbag.Bag,
-        imu_synchronization_strategy: str
     ) -> None:
 
         self._add_images_to_bag(
@@ -261,32 +206,42 @@ class Vn100ImuHandler(SensorDataHandler):
         self,
         input_directory: str,
         bag: rosbag.Bag,
-        imu_synchronization_strategy: str
     ) -> None:
         
-        imu_data = pandas.read_csv(os.path.join(input_directory, "vn100", "imu.csv"), usecols=range(1, 8))
+        imu_data = pandas.read_csv(
+            os.path.join(input_directory, "vn100", "imu.txt"), 
+            sep=" ", 
+            usecols=range(1, 8),
+            names=["timestamp_end_reading", "acc_x", "acc_y", "acc_z", "gyro_x", "gyro_y", "gyro_z"])
         
         imu_data = imu_data.set_index(
-            pandas.to_datetime(imu_data["timestamp end reading"], unit="s"),
-        ).drop("timestamp end reading", axis=1)
+            pandas.to_datetime(imu_data["timestamp_end_reading"], unit="s"),
+        ).drop("timestamp_end_reading", axis=1)
 
         self._add_imu_data_to_bag(
-            imu_data, imu_synchronization_strategy, bag, "/vn100/imu"
+            imu_data, 
+            bag, 
+            "/vn100/imu"
         )
         
 def main():
     parser = argparse.ArgumentParser(description="Script to convert raw sensor data in a rosbag.")
-    parser.add_argument("--input_directory", type=str, help="Path to the directory containing sensor data.")
-    parser.add_argument("--output_bag", type=str, help="Path to the output rosbag file. Default set to input_directory/rosbag.bag")
-    parser.add_argument("--sensors", nargs='+', choices=["d435i", "t265", "pi_cam", "vn100"], required=True,
+    parser.add_argument("--input_directory", 
+                        type=str, 
+                        help="Path to the directory containing sensor data.")
+    parser.add_argument("--output_bag", 
+                        type=str, 
+                        help="Path to the output rosbag file. Default set to input_directory/rosbag.bag")
+    parser.add_argument("--sensors", 
+                        nargs='+', 
+                        choices=["d435i", "t265", "pi_cam", "vn100"],
+                        default=["d435i", "t265", "pi_cam", "vn100"],
                         help="List of sensors to include in the rosbag. Choices are 'd435i', 't265', 'pi_cam', 'vn100'.")
-    parser.add_argument("--imu_sync_strategy", type=str, choices=["merge", "downsampling", "upsampling"],
-                        default="merge", help="IMU synchronization strategy. Default is 'merge'.")
     args = parser.parse_args()
 
     output_bag = args.output_bag if args.output_bag else os.path.join(args.input_directory, "rosbag.bag")
 
-    bag = rosbag.Bag(args.output_bag, 'w')
+    bag = rosbag.Bag(output_bag, 'w')
     
     try:
         sensor_handlers = {
@@ -300,8 +255,7 @@ def main():
             handler = sensor_handlers[sensor]
             handler._add_data_to_bag(
                 input_directory=args.input_directory,
-                bag=bag,
-                imu_synchronization_strategy=args.imu_sync_strategy
+                bag=bag
             )
 
     except KeyboardInterrupt:
@@ -310,7 +264,7 @@ def main():
         print(f"An error occurred: {e}")
     finally:
         bag.close()
-        print(f"Rosbag saved to: {args.output_bag}")
+        print(f"Rosbag saved to: {output_bag}")
 
 if __name__ == "__main__":
     main()
