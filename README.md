@@ -328,7 +328,7 @@ python3 raw_to_rosbag.py \
 ## Citing
 If you find our work useful, please consider citing:
 ```bibtex
-@ARTICLE{schmidt2025rover,
+@article{schmidt2025rover,
   author={Schmidt, Fabian and Daubermann, Julian and Mitschke, Marcel and Blessing, Constantin and Meyer, Stephan and Enzweiler, Markus and Valada, Abhinav},
   journal={IEEE Transactions on Robotics}, 
   title={ROVER: A Multi-Season Dataset for Visual SLAM}, 
@@ -339,4 +339,14 @@ If you find our work useful, please consider citing:
   keywords={Simultaneous localization and mapping;Visualization;Forestry;Robots;Lighting;Global navigation satellite system;Benchmark testing;Location awareness;Automobiles;Hands;SLAM;Visual SLAM;datasets;benchmark},
   doi={10.1109/TRO.2025.3577026}}
 
+```
+or our VI-SLAM Analysis
+```bibtex
+@article{schmidt2025visual,
+  title={Visual-Inertial SLAM for Unstructured Outdoor Environments: Benchmarking the Benefits and Computational Costs of Loop Closing},
+  author={Schmidt, Fabian and Blessing, Constantin and Enzweiler, Markus and Valada, Abhinav},
+  journal={Journal of Field Robotics},
+  year={2025},
+  publisher={Wiley Online Library}
+}
 ```
