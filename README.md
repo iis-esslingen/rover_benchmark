@@ -347,6 +347,7 @@ or our VI-SLAM Analysis
   author={Schmidt, Fabian and Blessing, Constantin and Enzweiler, Markus and Valada, Abhinav},
   journal={Journal of Field Robotics},
   year={2025},
+  doi={10.1002/rob.22581},
   publisher={Wiley Online Library}
 }
 ```
