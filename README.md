@@ -22,6 +22,7 @@
 - **`[2024/12/05]`** Initial code release.
 - **`[2025/05/20]`** ROVER is accepted to IEEE Transactions on Robotics.
 - **`[2025/05/25]`** Dataset released on [HuggingFace](https://huggingface.co/datasets/iis-esslingen/ROVER) and our [data server](https://fdm.hs-esslingen.de/schmidt2025rover/). See Utility section for HuggingFace [download script](https://github.com/iis-esslingen/rover_benchmark/blob/main/utils/download.py).
+- **`[2025/09/27]`** ROVER is integrated in [VSLAM-LAB](https://github.com/VSLAM-LAB/VSLAM-LAB) framework.
 
 ## Getting Started
 The only required software is [Docker](https://www.docker.com/). Each SLAM method comes with its own Docker container, making setup straightforward. We recommend using VSCode with the Docker extension for an enhanced development experience. Additionally, we provide a Docker container with tools for evaluating and handling the ROVER dataset.
